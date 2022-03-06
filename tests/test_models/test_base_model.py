@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+"""test for BaseModel """
 from models.base_model import BaseModel
 import unittest
 import datetime
@@ -9,16 +9,20 @@ import os
 
 
 class test_basemodel(unittest.TestCase):
-    """ """
+    """this will test the base model class """
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """test if the base is an type BaseModel"""
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
 
     def setUp(self):
-        """ """
+        """setup for the test"""
+        cls.base = BaseModel()
+        cls.base.name = "Kev"
+        cls.base.num = 20
+
         pass
 
     def tearDown(self):
@@ -86,14 +90,19 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.id), str)
 
     def test_created_at(self):
-        """ """
+        """test if what is created works """
         new = self.value()
         self.assertEqual(type(new.created_at), datetime.datetime)
 
     def test_updated_at(self):
-        """ """
+        """test if the update works """
         new = self.value()
         self.assertEqual(type(new.updated_at), datetime.datetime)
         n = new.to_dict()
         new = BaseModel(**n)
         self.assertFalse(new.created_at == new.updated_at)
+
+
+
+     if __name__ == "__main__":
+        unittest.main()   
