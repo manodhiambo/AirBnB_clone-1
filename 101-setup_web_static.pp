@@ -19,7 +19,7 @@ exec { 'Create Test Folder':
   require  => Exec['Create Shared Folder']
 }
 exec { 'Create Fake File':
-  command  => 'echo "Holberton School" > /data/web_static/releases/test/index.html',
+  command  => 'echo "/data/web_static/releases/test/index.html"',
   provider => shell,
   require  => Exec['Create Test Folder'],
   returns  => [0, 1]
